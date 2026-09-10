@@ -1,0 +1,2499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Msafiri Global Media V2</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+button,input,textarea,select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.app{
+    min-height:100vh;
+}
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+.auth{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    background:linear-gradient(135deg,#071d49,#1261d6);
+}
+
+.auth-card{
+    width:100%;
+    max-width:430px;
+    background:white;
+    border-radius:24px;
+    padding:30px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.logo{
+    text-align:center;
+    font-size:27px;
+    font-weight:800;
+    color:#1261d6;
+    margin-bottom:8px;
+}
+
+.tagline{
+    text-align:center;
+    color:#667085;
+    margin-bottom:25px;
+}
+
+.auth-card input{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border:1px solid #d9e0eb;
+    border-radius:12px;
+    outline:none;
+}
+
+.primary{
+    width:100%;
+    border:0;
+    padding:14px;
+    border-radius:12px;
+    color:white;
+    background:#1261d6;
+    font-weight:700;
+    margin-top:10px;
+}
+
+.switch{
+    text-align:center;
+    margin-top:18px;
+    color:#1261d6;
+    cursor:pointer;
+}
+
+/* =====================================================
+   TOPBAR
+===================================================== */
+
+.topbar{
+    height:64px;
+    background:white;
+    border-bottom:1px solid #e6eaf0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+    position:sticky;
+    top:0;
+    z-index:20;
+}
+
+.brand{
+    font-weight:900;
+    color:#1261d6;
+    font-size:20px;
+}
+
+.top-search{
+    width:40%;
+    padding:10px 15px;
+    border-radius:20px;
+    border:1px solid #dce2ea;
+    outline:none;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-weight:700;
+}
+
+.avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#1261d6;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.layout{
+    display:flex;
+    min-height:calc(100vh - 64px);
+}
+
+.sidebar{
+    width:220px;
+    background:white;
+    border-right:1px solid #e6eaf0;
+    padding:15px;
+    position:sticky;
+    top:64px;
+    height:calc(100vh - 64px);
+    overflow:auto;
+}
+
+.nav-btn{
+    width:100%;
+    text-align:left;
+    border:0;
+    background:transparent;
+    padding:13px;
+    border-radius:12px;
+    margin-bottom:5px;
+    color:#475467;
+    font-weight:600;
+}
+
+.nav-btn:hover,
+.nav-btn.active{
+    background:#e9f1ff;
+    color:#1261d6;
+}
+
+.content{
+    flex:1;
+    max-width:1000px;
+    margin:auto;
+    width:100%;
+    padding:20px;
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card{
+    background:white;
+    border:1px solid #e6eaf0;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:16px;
+}
+
+.page-title{
+    font-size:25px;
+    font-weight:800;
+    margin-bottom:5px;
+}
+
+.page-subtitle{
+    color:#667085;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:14px;
+}
+
+.feature{
+    padding:20px;
+    border:1px solid #e2e7ef;
+    border-radius:17px;
+    background:white;
+}
+
+.feature h3{
+    margin-bottom:8px;
+}
+
+.feature p{
+    color:#667085;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.feature button{
+    margin-top:14px;
+    border:0;
+    background:#1261d6;
+    color:white;
+    border-radius:10px;
+    padding:9px 13px;
+}
+
+/* =====================================================
+   STORIES
+===================================================== */
+
+.stories{
+    display:flex;
+    gap:12px;
+    overflow:auto;
+    padding-bottom:5px;
+}
+
+.story{
+    min-width:80px;
+    text-align:center;
+}
+
+.story-circle{
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    background:#1261d6;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto auto 6px;
+    font-weight:800;
+}
+
+/* =====================================================
+   POST CREATOR
+===================================================== */
+
+.post-box textarea{
+    width:100%;
+    min-height:80px;
+    border:1px solid #d9e0e8;
+    border-radius:13px;
+    padding:13px;
+    resize:vertical;
+    outline:none;
+}
+
+.post-actions{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:10px;
+    gap:10px;
+}
+
+.post-actions input{
+    flex:1;
+}
+
+.btn{
+    border:0;
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:700;
+}
+
+.btn-blue{
+    background:#1261d6;
+    color:white;
+}
+
+.btn-light{
+    background:#edf2f7;
+    color:#344054;
+}
+
+.post-media{
+    width:100%;
+    max-height:500px;
+    object-fit:cover;
+    border-radius:13px;
+    margin-top:12px;
+}
+
+.post-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.post-user{
+    font-weight:800;
+}
+
+.post-date{
+    color:#98a2b3;
+    font-size:12px;
+}
+
+.post-caption{
+    margin-top:12px;
+    white-space:pre-wrap;
+    line-height:1.5;
+}
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+.chat-box{
+    height:430px;
+    overflow:auto;
+    border:1px solid #e4e8ef;
+    border-radius:14px;
+    padding:14px;
+    background:#f8fafc;
+}
+
+.message{
+    padding:10px 13px;
+    margin:8px 0;
+    border-radius:14px;
+    max-width:75%;
+    background:#e5e7eb;
+}
+
+.message.mine{
+    margin-left:auto;
+    background:#1261d6;
+    color:white;
+}
+
+.chat-input{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
+}
+
+.chat-input input{
+    flex:1;
+    padding:13px;
+    border:1px solid #d9e0e8;
+    border-radius:12px;
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.table th,
+.table td{
+    padding:12px;
+    border-bottom:1px solid #e6eaf0;
+    text-align:left;
+}
+
+/* =====================================================
+   MOBILE NAV
+===================================================== */
+
+.bottom-nav{
+    display:none;
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .top-search{
+        width:35%;
+    }
+
+    .content{
+        padding:12px;
+        padding-bottom:85px;
+    }
+
+    .bottom-nav{
+        position:fixed;
+        display:flex;
+        bottom:0;
+        left:0;
+        right:0;
+        height:66px;
+        background:white;
+        border-top:1px solid #e1e6ed;
+        z-index:50;
+        overflow-x:auto;
+    }
+
+    .bottom-nav button{
+        min-width:90px;
+        border:0;
+        background:white;
+        font-size:11px;
+        font-weight:700;
+        color:#667085;
+    }
+
+    .bottom-nav button.active{
+        color:#1261d6;
+    }
+
+    .brand{
+        font-size:15px;
+    }
+
+    .top-search{
+        width:38%;
+    }
+}
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+    position:fixed;
+    right:20px;
+    bottom:80px;
+    background:#172033;
+    color:white;
+    padding:13px 16px;
+    border-radius:12px;
+    z-index:100;
+    display:none;
+}
+
+.toast.show{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===================================================
+AUTH
+=================================================== -->
+
+<section id="auth" class="auth">
+
+    <div class="auth-card">
+
+        <div class="logo">
+            MSAFIRI GLOBAL MEDIA
+        </div>
+
+        <div class="tagline">
+            Connect • Create • Learn • Discover
+        </div>
+
+        <div id="loginForm">
+
+            <h2>Welcome back</h2>
+
+            <input id="loginUsername"
+                   placeholder="Username">
+
+            <input id="loginPassword"
+                   type="password"
+                   placeholder="Password">
+
+            <button class="primary"
+                    onclick="login()">
+                Login
+            </button>
+
+            <div class="switch"
+                 onclick="showRegister()">
+                Create new account
+            </div>
+
+        </div>
+
+
+        <div id="registerForm" class="hidden">
+
+            <h2>Create account</h2>
+
+            <input id="regName"
+                   placeholder="Full name">
+
+            <input id="regUsername"
+                   placeholder="Username">
+
+            <input id="regPassword"
+                   type="password"
+                   placeholder="Password">
+
+            <button class="primary"
+                    onclick="register()">
+                Register
+            </button>
+
+            <div class="switch"
+                 onclick="showLogin()">
+                Already have account? Login
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===================================================
+APP
+=================================================== -->
+
+<section id="app" class="app hidden">
+
+<header class="topbar">
+
+    <div class="brand">
+        MSAFIRI GLOBAL MEDIA
+    </div>
+
+    <input
+        class="top-search"
+        id="globalSearch"
+        placeholder="Search anything..."
+        onkeydown="searchEnter(event)"
+    >
+
+    <div class="profile">
+        <div id="profileName">User</div>
+        <div class="avatar" id="avatar">M</div>
+    </div>
+
+</header>
+
+
+<div class="layout">
+
+<!-- ===================================================
+SIDEBAR
+=================================================== -->
+
+<aside class="sidebar">
+
+<button class="nav-btn active"
+        onclick="page('home',this)">
+    🏠 Home
+</button>
+
+<button class="nav-btn"
+        onclick="page('connect',this)">
+    💬 Connect
+</button>
+
+<button class="nav-btn"
+        onclick="page('video',this)">
+    🎬 Video
+</button>
+
+<button class="nav-btn"
+        onclick="page('studio',this)">
+    🎨 Studio
+</button>
+
+<button class="nav-btn"
+        onclick="page('market',this)">
+    🛒 Market
+</button>
+
+<button class="nav-btn"
+        onclick="page('ai',this)">
+    🤖 AI Council
+</button>
+
+<button class="nav-btn"
+        onclick="page('maps',this)">
+    🗺️ Maps
+</button>
+
+<hr style="margin:15px 0;border:0;border-top:1px solid #eee">
+
+<button class="nav-btn"
+        onclick="page('academy',this)">
+    🎓 Academy
+</button>
+
+<button class="nav-btn"
+        onclick="page('vault',this)">
+    📚 Knowledge Vault
+</button>
+
+<button class="nav-btn"
+        onclick="page('reality',this)">
+    🔬 Reality Lab
+</button>
+
+<button class="nav-btn"
+        onclick="page('projects',this)">
+    🛠️ Collaborate
+</button>
+
+<button class="nav-btn"
+        onclick="page('channels',this)">
+    📡 Channels
+</button>
+
+<button class="nav-btn"
+        onclick="page('dashboard',this)">
+    📊 Dashboard
+</button>
+
+<button class="nav-btn"
+        onclick="logout()">
+    🚪 Logout
+</button>
+
+</aside>
+
+
+<!-- ===================================================
+CONTENT
+=================================================== -->
+
+<main class="content">
+
+<!-- HOME -->
+
+<section id="page-home">
+
+<div class="page-title">
+    Home
+</div>
+
+<div class="page-subtitle">
+    Karibu kwenye MSAFIRI GLOBAL MEDIA.
+</div>
+
+
+<div class="card">
+
+<h3>Stories</h3>
+
+<div class="stories">
+
+<div class="story">
+<div class="story-circle">M</div>
+<span>You</span>
+</div>
+
+<div class="story">
+<div class="story-circle">N</div>
+<span>News</span>
+</div>
+
+<div class="story">
+<div class="story-circle">E</div>
+<span>Edu</span>
+</div>
+
+<div class="story">
+<div class="story-circle">T</div>
+<span>Tech</span>
+</div>
+
+<div class="story">
+<div class="story-circle">S</div>
+<span>Science</span>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card post-box">
+
+<h3>Create Post</h3>
+
+<textarea
+id="caption"
+placeholder="Unafikiria nini? Andika caption hapa..."
+></textarea>
+
+<div class="post-actions">
+
+<input
+type="file"
+id="postMedia"
+accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt"
+>
+
+<button
+class="btn btn-blue"
+onclick="createPost()">
+Post
+</button>
+
+</div>
+
+</div>
+
+
+<div id="feed"></div>
+
+</section>
+
+
+<!-- CONNECT -->
+
+<section id="page-connect" class="hidden">
+
+<div class="page-title">
+Connect
+</div>
+
+<div class="page-subtitle">
+Chat, voice notes, files na future calls.
+</div>
+
+<div class="card">
+
+<h3>Users</h3>
+
+<div id="usersList">
+Loading users...
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Chat</h3>
+
+<div id="chatBox"
+     class="chat-box">
+Chagua user kuanza chat.
+</div>
+
+<div class="chat-input">
+
+<input id="chatInput"
+       placeholder="Andika message...">
+
+<button class="btn btn-blue"
+        onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+<div style="margin-top:10px">
+
+<button class="btn btn-light"
+        onclick="showToast('Voice note UI tayari — recording service itaunganishwa hatua inayofuata.')">
+🎙 Voice Note
+</button>
+
+<button class="btn btn-light"
+        onclick="showToast('Voice call module iko tayari kwa integration.')">
+📞 Voice Call
+</button>
+
+<button class="btn btn-light"
+        onclick="showToast('Video call module iko tayari kwa integration.')">
+📹 Video Call
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VIDEO -->
+
+<section id="page-video" class="hidden">
+
+<div class="page-title">
+Video
+</div>
+
+<div class="page-subtitle">
+Education • News • Science • Sports • Music • Gaming • Documentary
+</div>
+
+<div class="grid">
+
+<div class="feature">
+<h3>🎓 Education</h3>
+<p>Video za elimu na tutorials.</p>
+<button onclick="showToast('Education videos')">Open</button>
+</div>
+
+<div class="feature">
+<h3>📰 News</h3>
+<p>News channels na current events.</p>
+<button onclick="showToast('News videos')">Open</button>
+</div>
+
+<div class="feature">
+<h3>🔬 Science</h3>
+<p>Science na technology.</p>
+<button onclick="showToast('Science videos')">Open</button>
+</div>
+
+<div class="feature">
+<h3>⚽ Sports</h3>
+<p>Sports content.</p>
+<button onclick="showToast('Sports videos')">Open</button>
+</div>
+
+<div class="feature">
+<h3>🎵 Music</h3>
+<p>Music content.</p>
+<button onclick="showToast('Music videos')">Open</button>
+</div>
+
+<div class="feature">
+<h3>🎮 Gaming</h3>
+<p>Gaming content.</p>
+<button onclick="showToast('Gaming videos')">Open</button>
+</div>
+
+<div class="feature">
+<h3>🎥 Documentary</h3>
+<p>Documentary content.</p>
+<button onclick="showToast('Documentaries')">Open</button>
+</div>
+
+<div class="feature">
+<h3>💻 Tech Hub</h3>
+<p>Technology ecosystem.</p>
+<button onclick="showToast('Tech Hub')">Open</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- STUDIO -->
+
+<section id="page-studio" class="hidden">
+
+<div class="page-title">
+Creative Studio
+</div>
+
+<div class="page-subtitle">
+AI-powered creator tools.
+</div>
+
+<div class="grid">
+
+<div class="feature">
+<h3>✂️ Auto Cut</h3>
+<p>Automatic video editing workflow.</p>
+<button onclick="showToast('Auto Cut selected')">Open</button>
+</div>
+
+<div class="feature">
+<h3>💬 Captions</h3>
+<p>Generate captions for videos.</p>
+<button onclick="showToast('Captions selected')">Open</button>
+</div>
+
+<div class="feature">
+<h3>🖼 BG Removal</h3>
+<p>Background removal workflow.</p>
+<button onclick="showToast('Background removal selected')">Open</button>
+</div>
+
+<div class="feature">
+<h3>🎙 Voice Enhance</h3>
+<p>Improve voice quality.</p>
+<button onclick="showToast('Voice Enhance selected')">Open</button>
+</div>
+
+<div class="feature">
+<h3>✨ AI Effects</h3>
+<p>Creative AI effects.</p>
+<button onclick="showToast('AI Effects selected')">Open</button>
+</div>
+
+<div class="feature">
+<h3>🌍 Translate</h3>
+<p>Translation workflow.</p>
+<button onclick="showToast('Translate selected')">Open</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MARKET -->
+
+<section id="page-market" class="hidden">
+
+<div class="page-title">
+Market
+</div>
+
+<div class="page-subtitle">
+Deals of the Day • Categories • Popular Products
+</div>
+
+<div id="marketProducts"
+     class="grid">
+Loading...
+</div>
+
+</section>
+
+
+<!-- AI -->
+
+<section id="page-ai" class="hidden">
+
+<div class="page-title">
+AI COUNCILS
+</div>
+
+<div class="page-subtitle">
+Choose an AI Council.
+</div>
+
+<div id="aiCouncils"
+     class="grid">
+Loading...
+</div>
+
+<div class="card">
+
+<h3 id="selectedCouncil">
+Edu AI
+</h3>
+
+<textarea
+id="aiQuestion"
+style="width:100%;min-height:120px;padding:13px;border:1px solid #ddd;border-radius:12px"
+placeholder="Andika swali lako hapa..."
+></textarea>
+
+<button
+class="btn btn-blue"
+style="margin-top:10px"
+onclick="askAI()">
+Ask AI
+</button>
+
+<div
+id="aiAnswer"
+style="margin-top:15px;line-height:1.6">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MAPS -->
+
+<section id="page-maps" class="hidden">
+
+<div class="page-title">
+Maps
+</div>
+
+<div class="page-subtitle">
+Interactive map and directions.
+</div>
+
+<div class="card">
+
+<input
+id="placeSearch"
+style="width:100%;padding:13px;border:1px solid #ddd;border-radius:12px"
+placeholder="Search place..."
+>
+
+<button
+class="btn btn-blue"
+style="margin-top:10px"
+onclick="searchPlace()">
+Search
+</button>
+
+<div id="mapResult"
+style="margin-top:15px">
+Map integration ready.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ACADEMY -->
+
+<section id="page-academy" class="hidden">
+
+<div class="page-title">
+Academy
+</div>
+
+<div class="page-subtitle">
+Diploma Level • Core Options • Progress
+</div>
+
+<div class="card">
+
+<h3>Diploma Learning Dashboard</h3>
+
+<p style="margin-top:10px">
+Progress
+</p>
+
+<div style="background:#e5e7eb;border-radius:20px;height:15px;margin-top:8px">
+
+<div style="width:35%;height:100%;background:#1261d6;border-radius:20px"></div>
+
+</div>
+
+<p style="margin-top:15px">
+Core Option Score: <b>78%</b>
+</p>
+
+</div>
+
+</section>
+
+
+<!-- KNOWLEDGE VAULT -->
+
+<section id="page-vault" class="hidden">
+
+<div class="page-title">
+Knowledge Vault
+</div>
+
+<div class="page-subtitle">
+AI Document Assistant.
+</div>
+
+<div class="card">
+
+<input
+type="file"
+id="documentFile"
+accept=".pdf,.doc,.docx,.txt"
+>
+
+<button
+class="btn btn-blue"
+style="margin-top:10px"
+onclick="uploadDocument()">
+Upload Document
+</button>
+
+</div>
+
+<div class="grid">
+
+<div class="feature">
+<h3>📝 Summarize</h3>
+<p>Summarize documents.</p>
+</div>
+
+<div class="feature">
+<h3>🔎 Analyze</h3>
+<p>Analyze document content.</p>
+</div>
+
+<div class="feature">
+<h3>🌍 Translate</h3>
+<p>Translate documents.</p>
+</div>
+
+<div class="feature">
+<h3>📤 Extract</h3>
+<p>Extract useful information.</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Recent Documents</h3>
+
+<div id="documentsList">
+No documents yet.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- REALITY -->
+
+<section id="page-reality" class="hidden">
+
+<div class="page-title">
+Reality Lab
+</div>
+
+<div class="grid">
+
+<div class="feature">
+<h3>📏 Measure Length</h3>
+<p>Measure objects using camera/vision integration.</p>
+<button onclick="showToast('Measure tool ready for camera integration.')">
+Open
+</button>
+</div>
+
+<div class="feature">
+<h3>🔢 Object Counter</h3>
+<p>Count objects using computer vision.</p>
+<button onclick="showToast('Object Counter ready for vision integration.')">
+Open
+</button>
+</div>
+
+<div class="feature">
+<h3>🌺 Plant Identifier</h3>
+<p>Plant recognition module.</p>
+<button onclick="showToast('Plant Identifier ready for vision model integration.')">
+Open
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="page-projects" class="hidden">
+
+<div class="page-title">
+Collaborate Project
+</div>
+
+<div class="page-subtitle">
+Smart Irrigation System
+</div>
+
+<div class="card">
+
+<h3>Create Project</h3>
+
+<input
+id="projectTitle"
+style="width:100%;padding:12px;border:1px solid #ddd;border-radius:10px"
+placeholder="Project title"
+>
+
+<textarea
+id="projectDescription"
+style="width:100%;min-height:90px;padding:12px;border:1px solid #ddd;border-radius:10px;margin-top:10px"
+placeholder="Description"
+></textarea>
+
+<button
+class="btn btn-blue"
+style="margin-top:10px"
+onclick="createProject()">
+Create
+</button>
+
+</div>
+
+<div class="grid">
+
+<div class="feature">
+<h3>📋 Overview</h3>
+<p>Project overview.</p>
+</div>
+
+<div class="feature">
+<h3>✅ Tasks</h3>
+<p>Manage project tasks.</p>
+</div>
+
+<div class="feature">
+<h3>📁 Files</h3>
+<p>Project files.</p>
+</div>
+
+<div class="feature">
+<h3>👥 Team</h3>
+<p>Collaborators.</p>
+</div>
+
+<div class="feature">
+<h3>💬 Chat</h3>
+<p>Project communication.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CHANNELS -->
+
+<section id="page-channels" class="hidden">
+
+<div class="page-title">
+Channels
+</div>
+
+<div class="page-subtitle">
+Featured channels and live content.
+</div>
+
+<div id="channelsList"
+     class="grid">
+Loading...
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section id="page-dashboard" class="hidden">
+
+<div class="page-title">
+Dashboard
+</div>
+
+<div class="page-subtitle">
+Your MSAFIRI GLOBAL MEDIA overview.
+</div>
+
+<div id="dashboardCards"
+     class="grid">
+Loading...
+</div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section id="page-search" class="hidden">
+
+<div class="page-title">
+Search
+</div>
+
+<div class="page-subtitle">
+Search people, posts and content.
+</div>
+
+<div id="searchResults"></div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<!-- MOBILE BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+<button onclick="page('home',this)">
+🏠<br>Home
+</button>
+
+<button onclick="page('connect',this)">
+💬<br>Connect
+</button>
+
+<button onclick="page('video',this)">
+🎬<br>Video
+</button>
+
+<button onclick="page('studio',this)">
+🎨<br>Studio
+</button>
+
+<button onclick="page('market',this)">
+🛒<br>Market
+</button>
+
+<button onclick="page('ai',this)">
+🤖<br>AI
+</button>
+
+<button onclick="page('maps',this)">
+🗺️<br>Maps
+</button>
+
+</nav>
+
+</section>
+
+
+<div id="toast"
+     class="toast">
+</div>
+
+
+<script>
+
+/* =====================================================
+   GLOBAL STATE
+===================================================== */
+
+let currentUser =
+    JSON.parse(localStorage.getItem("mgm_user") || "null");
+
+let selectedUser = null;
+let selectedCouncil = "education";
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+async function api(url, options={}){
+
+    const response = await fetch(url, options);
+
+    const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.message || "Request failed");
+    }
+
+    return data;
+}
+
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },3000);
+}
+
+
+/* =====================================================
+   AUTH UI
+===================================================== */
+
+function showRegister(){
+
+    document
+        .getElementById("loginForm")
+        .classList.add("hidden");
+
+    document
+        .getElementById("registerForm")
+        .classList.remove("hidden");
+}
+
+
+function showLogin(){
+
+    document
+        .getElementById("registerForm")
+        .classList.add("hidden");
+
+    document
+        .getElementById("loginForm")
+        .classList.remove("hidden");
+}
+
+
+/* =====================================================
+   REGISTER
+===================================================== */
+
+async function register(){
+
+    const name =
+        document.getElementById("regName").value.trim();
+
+    const username =
+        document.getElementById("regUsername").value.trim();
+
+    const password =
+        document.getElementById("regPassword").value.trim();
+
+    try{
+
+        const data = await api("/api/register",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                name,
+                username,
+                password
+            })
+        });
+
+        currentUser = data.user;
+
+        localStorage.setItem(
+            "mgm_user",
+            JSON.stringify(currentUser)
+        );
+
+        openApp();
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+async function login(){
+
+    const username =
+        document.getElementById("loginUsername").value.trim();
+
+    const password =
+        document.getElementById("loginPassword").value.trim();
+
+    try{
+
+        const data = await api("/api/login",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                username,
+                password
+            })
+        });
+
+        currentUser = data.user;
+
+        localStorage.setItem(
+            "mgm_user",
+            JSON.stringify(currentUser)
+        );
+
+        openApp();
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+/* =====================================================
+   OPEN APP
+===================================================== */
+
+function openApp(){
+
+    document
+        .getElementById("auth")
+        .classList.add("hidden");
+
+    document
+        .getElementById("app")
+        .classList.remove("hidden");
+
+    document
+        .getElementById("profileName")
+        .textContent = currentUser.name;
+
+    document
+        .getElementById("avatar")
+        .textContent =
+            currentUser.name
+            .charAt(0)
+            .toUpperCase();
+
+    loadFeed();
+    loadUsers();
+    loadMarket();
+    loadCouncils();
+    loadChannels();
+    loadDashboard();
+    loadDocuments();
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+    localStorage.removeItem("mgm_user");
+
+    location.reload();
+}
+
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+function page(name, button){
+
+    const pages = [
+        "home",
+        "connect",
+        "video",
+        "studio",
+        "market",
+        "ai",
+        "maps",
+        "academy",
+        "vault",
+        "reality",
+        "projects",
+        "channels",
+        "dashboard",
+        "search"
+    ];
+
+    pages.forEach(p=>{
+
+        const el =
+            document.getElementById("page-"+p);
+
+        if(el){
+            el.classList.add("hidden");
+        }
+
+    });
+
+    const selected =
+        document.getElementById("page-"+name);
+
+    if(selected){
+        selected.classList.remove("hidden");
+    }
+
+    document
+        .querySelectorAll(".nav-btn,.bottom-nav button")
+        .forEach(x=>x.classList.remove("active"));
+
+    if(button){
+        button.classList.add("active");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* =====================================================
+   CREATE POST
+===================================================== */
+
+async function createPost(){
+
+    const caption =
+        document.getElementById("caption").value.trim();
+
+    const file =
+        document.getElementById("postMedia").files[0];
+
+    if(!caption && !file){
+
+        showToast("Andika caption au chagua media.");
+        return;
+    }
+
+    const form =
+        new FormData();
+
+    form.append(
+        "user_id",
+        currentUser.id
+    );
+
+    form.append(
+        "caption",
+        caption
+    );
+
+    if(file){
+        form.append(
+            "media",
+            file
+        );
+    }
+
+    try{
+
+        await api("/api/posts",{
+            method:"POST",
+            body:form
+        });
+
+        document.getElementById("caption").value="";
+        document.getElementById("postMedia").value="";
+
+        showToast("Post imechapishwa!");
+
+        loadFeed();
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+/* =====================================================
+   LOAD FEED
+===================================================== */
+
+async function loadFeed(){
+
+    try{
+
+        const data =
+            await api("/api/posts");
+
+        const feed =
+            document.getElementById("feed");
+
+        feed.innerHTML = "";
+
+        if(data.posts.length===0){
+
+            feed.innerHTML = `
+                <div class="card">
+                    <h3>Hakuna posts bado.</h3>
+                    <p style="margin-top:8px;color:#667085">
+                    Kuwa wa kwanza kuchapisha post.
+                    </p>
+                </div>
+            `;
+
+            return;
+        }
+
+        data.posts.forEach(post=>{
+
+            let mediaHTML="";
+
+            if(post.media_type==="image"){
+
+                mediaHTML =
+                    `<img class="post-media"
+                    src="${post.media_url}">`;
+
+            }else if(post.media_type==="video"){
+
+                mediaHTML =
+                    `<video class="post-media"
+                    controls
+                    src="${post.media_url}">
+                    </video>`;
+
+            }else if(post.media_type==="audio"){
+
+                mediaHTML =
+                    `<audio
+                    style="width:100%;margin-top:12px"
+                    controls
+                    src="${post.media_url}">
+                    </audio>`;
+
+            }else if(post.media){
+
+                mediaHTML =
+                    `<a href="${post.media_url}"
+                    target="_blank">
+                    📎 Open file
+                    </a>`;
+            }
+
+            const deleteButton =
+                currentUser.id === post.user_id
+                ?
+                `<button
+                class="btn btn-light"
+                onclick="deletePost(${post.id})">
+                🗑 Delete
+                </button>`
+                :
+                "";
+
+            feed.innerHTML += `
+
+            <article class="card">
+
+                <div class="post-header">
+
+                    <div>
+                        <div class="post-user">
+                            ${escapeHTML(post.name)}
+                        </div>
+
+                        <div class="post-date">
+                            @${escapeHTML(post.username)}
+                        </div>
+                    </div>
+
+                    ${deleteButton}
+
+                </div>
+
+                ${
+                    post.caption
+                    ?
+                    `<div class="post-caption">
+                        ${escapeHTML(post.caption)}
+                    </div>`
+                    :
+                    ""
+                }
+
+                ${mediaHTML}
+
+            </article>
+
+            `;
+        });
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+/* =====================================================
+   DELETE POST
+===================================================== */
+
+async function deletePost(id){
+
+    if(!confirm("Una uhakika unataka kufuta post hii?")){
+        return;
+    }
+
+    try{
+
+        await api(
+            `/api/posts/${id}?user_id=${currentUser.id}`,
+            {
+                method:"DELETE"
+            }
+        );
+
+        showToast("Post imefutwa.");
+
+        loadFeed();
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+/* =====================================================
+   USERS
+===================================================== */
+
+async function loadUsers(){
+
+    try{
+
+        const data =
+            await api("/api/users");
+
+        const box =
+            document.getElementById("usersList");
+
+        box.innerHTML="";
+
+        data.users.forEach(user=>{
+
+            if(user.id===currentUser.id){
+                return;
+            }
+
+            box.innerHTML += `
+
+            <button
+            class="btn btn-light"
+            style="margin:5px"
+            onclick="selectUser(${user.id},'${escapeHTML(user.name)}')">
+
+            👤 ${escapeHTML(user.name)}
+
+            </button>
+
+            `;
+        });
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+function selectUser(id,name){
+
+    selectedUser=id;
+
+    document.getElementById("chatBox").innerHTML =
+        `<b>Chat with ${name}</b>`;
+
+    loadMessages();
+}
+
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+async function loadMessages(){
+
+    if(!selectedUser){
+        return;
+    }
+
+    try{
+
+        const data =
+            await api(
+                `/api/messages?user_id=${currentUser.id}&other_id=${selectedUser}`
+            );
+
+        const box =
+            document.getElementById("chatBox");
+
+        box.innerHTML="";
+
+        data.messages.forEach(message=>{
+
+            box.innerHTML += `
+
+            <div class="message ${
+                Number(message.sender_id) === Number(currentUser.id)
+                ? "mine"
+                : ""
+            }">
+
+            ${escapeHTML(message.message)}
+
+            </div>
+            `;
+        });
+
+        box.scrollTop = box.scrollHeight;
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+async function sendMessage(){
+
+    if(!selectedUser){
+
+        showToast("Chagua user kwanza.");
+        return;
+    }
+
+    const input =
+        document.getElementById("chatInput");
+
+    const message =
+        input.value.trim();
+
+    if(!message){
+        return;
+    }
+
+    try{
+
+        await api("/api/messages",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                sender_id:currentUser.id,
+                receiver_id:selectedUser,
+                message,
+                message_type:"text"
+            })
+        });
+
+        input.value="";
+
+        loadMessages();
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+/* =====================================================
+   MARKET
+===================================================== */
+
+async function loadMarket(){
+
+    try{
+
+        const data =
+            await api("/api/market");
+
+        const box =
+            document.getElementById("marketProducts");
+
+        box.innerHTML="";
+
+        data.products.forEach(product=>{
+
+            box.innerHTML += `
+
+            <div class="feature">
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <p>
+                    ${product.category}
+                </p>
+
+                <p style="margin-top:10px;font-weight:800">
+                    ${product.price}
+                </p>
+
+                <button
+                onclick="showToast('Product selected')">
+                View Product
+                </button>
+
+            </div>
+
+            `;
+        });
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+/* =====================================================
+   AI COUNCILS
+===================================================== */
+
+async function loadCouncils(){
+
+    try{
+
+        const data =
+            await api("/api/ai/councils");
+
+        const box =
+            document.getElementById("aiCouncils");
+
+        box.innerHTML="";
+
+        Object.keys(data.councils).forEach(key=>{
+
+            const council =
+                data.councils[key];
+
+            box.innerHTML += `
+
+            <div class="feature">
+
+                <h3>
+                    🤖 ${council.name}
+                </h3>
+
+                <p>
+                    ${council.description}
+                </p>
+
+                <button
+                onclick="selectCouncil('${key}','${council.name}')">
+                Open Council
+                </button>
+
+            </div>
+
+            `;
+        });
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+function selectCouncil(key,name){
+
+    selectedCouncil=key;
+
+    document.getElementById(
+        "selectedCouncil"
+    ).textContent=name;
+
+    showToast(name+" selected");
+}
+
+
+async function askAI(){
+
+    const question =
+        document.getElementById("aiQuestion")
+        .value
+        .trim();
+
+    if(!question){
+
+        showToast("Andika swali.");
+        return;
+    }
+
+    const answer =
+        document.getElementById("aiAnswer");
+
+    answer.textContent="Thinking...";
+
+    try{
+
+        const data =
+            await api("/api/ai/ask",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    council:selectedCouncil,
+                    question
+                })
+            });
+
+        answer.innerHTML =
+            `<div class="card">
+                ${escapeHTML(data.answer)}
+            </div>`;
+
+    }catch(error){
+
+        answer.textContent=error.message;
+    }
+}
+
+
+/* =====================================================
+   CHANNELS
+===================================================== */
+
+async function loadChannels(){
+
+    try{
+
+        const data =
+            await api("/api/channels");
+
+        const box =
+            document.getElementById("channelsList");
+
+        box.innerHTML="";
+
+        data.channels.forEach(channel=>{
+
+            box.innerHTML += `
+
+            <div class="feature">
+
+                <h3>
+                    📡 ${channel.name}
+                </h3>
+
+                <p>
+                    ${channel.category}
+                </p>
+
+                <button
+                onclick="showToast('Channel opened')">
+                Open
+                </button>
+
+            </div>
+
+            `;
+        });
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+/* =====================================================
+   DOCUMENTS
+===================================================== */
+
+async function uploadDocument(){
+
+    const file =
+        document.getElementById("documentFile")
+        .files[0];
+
+    if(!file){
+
+        showToast("Chagua document.");
+        return;
+    }
+
+    const form =
+        new FormData();
+
+    form.append(
+        "user_id",
+        currentUser.id
+    );
+
+    form.append(
+        "file",
+        file
+    );
+
+    try{
+
+        await api("/api/documents",{
+            method:"POST",
+            body:form
+        });
+
+        showToast("Document imehifadhiwa.");
+
+        loadDocuments();
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+async function loadDocuments(){
+
+    try{
+
+        const data =
+            await api(
+                `/api/documents?user_id=${currentUser.id}`
+            );
+
+        const box =
+            document.getElementById("documentsList");
+
+        if(!data.documents.length){
+
+            box.textContent =
+                "No documents yet.";
+
+            return;
+        }
+
+        box.innerHTML="";
+
+        data.documents.forEach(doc=>{
+
+            box.innerHTML += `
+
+            <p style="padding:8px 0">
+                📄 ${escapeHTML(doc.filename)}
+            </p>
+
+            `;
+
+        });
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+/* =====================================================
+   PROJECTS
+===================================================== */
+
+async function createProject(){
+
+    const title =
+        document.getElementById("projectTitle")
+        .value
+        .trim();
+
+    const description =
+        document.getElementById("projectDescription")
+        .value
+        .trim();
+
+    if(!title){
+
+        showToast("Weka project title.");
+        return;
+    }
+
+    try{
+
+        await api("/api/projects",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                user_id:currentUser.id,
+                title,
+                description
+            })
+        });
+
+        showToast("Project created.");
+
+        document.getElementById("projectTitle").value="";
+        document.getElementById("projectDescription").value="";
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+async function loadDashboard(){
+
+    try{
+
+        const data =
+            await api(
+                `/api/dashboard?user_id=${currentUser.id}`
+            );
+
+        const d =
+            data.dashboard;
+
+        document.getElementById(
+            "dashboardCards"
+        ).innerHTML = `
+
+        <div class="feature">
+            <h3>📝 Posts</h3>
+            <p>${d.posts}</p>
+        </div>
+
+        <div class="feature">
+            <h3>📚 Documents</h3>
+            <p>${d.documents}</p>
+        </div>
+
+        <div class="feature">
+            <h3>🛠 Projects</h3>
+            <p>${d.projects}</p>
+        </div>
+
+        `;
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function searchEnter(event){
+
+    if(event.key==="Enter"){
+
+        const q =
+            document.getElementById(
+                "globalSearch"
+            ).value.trim();
+
+        searchEverything(q);
+    }
+}
+
+
+async function searchEverything(q){
+
+    if(!q){
+        return;
+    }
+
+    page("search");
+
+    try{
+
+        const data =
+            await api(
+                `/api/search?q=${encodeURIComponent(q)}`
+            );
+
+        const box =
+            document.getElementById(
+                "searchResults"
+            );
+
+        box.innerHTML = `
+            <div class="card">
+                <h3>People</h3>
+                ${
+                    data.users.length
+                    ?
+                    data.users.map(u=>
+                        `<p style="padding:7px">
+                        👤 ${escapeHTML(u.name)}
+                        (@${escapeHTML(u.username)})
+                        </p>`
+                    ).join("")
+                    :
+                    "<p>No people found.</p>"
+                }
+            </div>
+
+            <div class="card">
+                <h3>Posts</h3>
+                ${
+                    data.posts.length
+                    ?
+                    data.posts.map(p=>
+                        `<p style="padding:7px">
+                        ${escapeHTML(p.caption)}
+                        </p>`
+                    ).join("")
+                    :
+                    "<p>No posts found.</p>"
+                }
+            </div>
+        `;
+
+    }catch(error){
+
+        showToast(error.message);
+    }
+}
+
+
+/* =====================================================
+   MAP
+===================================================== */
+
+function searchPlace(){
+
+    const place =
+        document.getElementById(
+            "placeSearch"
+        ).value.trim();
+
+    if(!place){
+        showToast("Andika sehemu.");
+        return;
+    }
+
+    document.getElementById(
+        "mapResult"
+    ).innerHTML = `
+
+        <div class="card">
+
+            <h3>📍 ${escapeHTML(place)}</h3>
+
+            <p style="margin-top:8px">
+                Interactive Maps integration
+                iko tayari kwa hatua ya Maps API.
+            </p>
+
+        </div>
+
+    `;
+}
+
+
+/* =====================================================
+   SECURITY HELPER
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+}
+
+
+/* =====================================================
+   AUTO LOGIN
+===================================================== */
+
+if(currentUser){
+
+    openApp();
+
+}
+
+</script>
+
+</body>
+</html>
